@@ -1,14 +1,6 @@
 package in.co.rays.proj04.bean;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 public class RoleBean extends BaseBean {
-
-	public static final int ADMIN = 1;
-	public static final int STUDENT = 2;
-	public static final int COLLEGE_SCHOOL = 3;
-	public static final int KIOSK = 4;
 
 	private String name;
 	private String description;
@@ -27,23 +19,6 @@ public class RoleBean extends BaseBean {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-	
-	@Override
-	public void setResultset(ResultSet rs) {
-		super.setResultset(rs);
-		try {
-			this.setName(rs.getString("NAME"));
-			this.setDescription(rs.getString("DESCRIPTION"));
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
-	@Override
-	public String getValue() {
-		// TODO Auto-generated method stub
-		return name;
 	}
 
 }

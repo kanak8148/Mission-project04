@@ -1,10 +1,8 @@
 package in.co.rays.proj04.bean;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Timestamp;
 
-public  abstract class BaseBean implements DropdownListBean{
+public  abstract class BaseBean {
 
 	protected long id;
 	protected String createdBy;
@@ -52,22 +50,6 @@ public  abstract class BaseBean implements DropdownListBean{
 		this.modifiedDatetime = modifiedDatetime;
 	}
 	
-	public void setResultset(ResultSet rs) {
-		try {
-			this.setId(rs.getLong("ID"));
-			this.setCreatedBy(rs.getString("CREATED_BY"));
-			this.setModifiedBy(rs.getString("MODIFIED_BY"));
-			this.setCreatedDatetime(rs.getTimestamp("CREATED_DATETIME"));
-			this.setModifiedDatetime(rs.getTimestamp("MODIFIED_DATETIME"));
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
 	
-	@Override
-	public String getKey() {
-		return id+"";
-	}
-
 
 }
