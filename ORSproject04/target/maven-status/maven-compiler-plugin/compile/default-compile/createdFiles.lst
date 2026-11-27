@@ -1,0 +1,8 @@
+in\co\rays\proj04\bean\BaseBean.class
+in\co\rays\proj04\expection\DuplicateRecordException.class
+in\co\rays\proj04\model\RoleModel.class
+in\co\rays\proj04\bean\RoleBean.class
+in\co\rays\proj04\expection\DatabaseException.class
+in\co\rays\proj04\expection\RecordNotFoundException.class
+in\co\rays\proj04\expection\ApplicationException.class
+in\co\rays\proj04\util\JDBCDataSource.class

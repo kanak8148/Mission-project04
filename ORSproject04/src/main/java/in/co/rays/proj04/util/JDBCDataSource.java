@@ -6,15 +6,24 @@ import java.util.ResourceBundle;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
-public final class JDBCDataSource  {
+public final class JDBCDataSource {
 
 	private static JDBCDataSource jdbc = null;
 	private static ComboPooledDataSource cpds = null;
 	private static ResourceBundle rb = ResourceBundle.getBundle("in.co.rays.proj4.bundle.System");
 
+	// Multiple connection pools create honge.
+	// Extra memory consume hogi.
+	// Database connections unnecessarily increase ho sakte hain.
+	// Application ki performance affect ho sakti hai.
 	private JDBCDataSource() {
 
+		// JDBCDataSource class mein hum Singleton Design Pattern ka use isliye
+// hain taaki poore application mein JDBCDataSource ka sirf ek hi object create ho aur hum usi object ko baar-baar reuse kar sakein.
+
 		cpds = new ComboPooledDataSource();
+		
+		//cpds database ke multiple connections ka ek pool maintain karta hai. 
 
 		try {
 			cpds.setDriverClass(rb.getString("driver"));
