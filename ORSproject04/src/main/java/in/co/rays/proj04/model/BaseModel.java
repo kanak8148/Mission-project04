@@ -44,6 +44,29 @@ public abstract class BaseModel<T extends BaseBean> {
 		return pk + 1;
 
 	}
+	public T findByPK(long pk) throws ApplicationException {
+
+		T bean = null;
+		Connection conn = null;
+
+		try {
+			conn = JDBCDataSource.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement("select * from " + getTable() + " where id = ?");
+			pstmt.setLong(1, pk);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				bean = getBean();
+				bean.setResultset(rs);
+			}
+			rs.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new ApplicationException("Exception : Exception in getting User by pk");
+		} finally {
+			JDBCDataSource.closeConnection(conn);
+		}
+		return bean;
+	} 
 
 	public void delete(int id) throws DatabaseException {
 		Connection conn = null;
@@ -62,6 +85,8 @@ public abstract class BaseModel<T extends BaseBean> {
 		} finally {
 			JDBCDataSource.closeConnection(conn);
 		}
+		
+		
 
 	}
 }

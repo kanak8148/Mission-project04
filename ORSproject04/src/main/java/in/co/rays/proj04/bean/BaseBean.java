@@ -1,5 +1,7 @@
 package in.co.rays.proj04.bean;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 
 public  abstract class BaseBean {
@@ -48,6 +50,18 @@ public  abstract class BaseBean {
 
 	public void setModifiedDatetime(Timestamp modifiedDatetime) {
 		this.modifiedDatetime = modifiedDatetime;
+	}
+	
+	public void setResultset(ResultSet rs) {
+		try {
+			this.setId(rs.getLong("ID"));
+			this.setCreatedBy(rs.getString("CREATED_BY"));
+			this.setModifiedBy(rs.getString("MODIFIED_BY"));
+			this.setCreatedDatetime(rs.getTimestamp("CREATED_DATETIME"));
+			this.setModifiedDatetime(rs.getTimestamp("MODIFIED_DATETIME"));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	

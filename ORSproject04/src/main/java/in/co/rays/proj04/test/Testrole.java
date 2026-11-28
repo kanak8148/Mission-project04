@@ -9,7 +9,16 @@ public class Testrole {
 
 	public static void main(String[] args) {
 
-		add();
+		//add();
+		delete();
+
+	}
+
+	private static void delete() {
+		RoleBean bean = new RoleBean();
+		RoleModel md = new RoleModel();
+
+		md.delete(1);
 
 	}
 

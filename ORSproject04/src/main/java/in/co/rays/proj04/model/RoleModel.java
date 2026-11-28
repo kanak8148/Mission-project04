@@ -60,4 +60,9 @@ public class RoleModel extends BaseModel<RoleBean> {
 
 		return bean.getId();
 	}
+	
+	
+	
+	
+	
 }
